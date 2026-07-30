@@ -1,0 +1,9 @@
+fcm:
+  feature_path: features/originals_pca64_features.npy
+  feature_index_path: features/feature_index.csv
+  output_dir: features/fcm_results
+  clusters: [5, 6, 7]
+  m: 2.0
+  error: 1e-5
+  maxiter: 1000
+  seed: 42

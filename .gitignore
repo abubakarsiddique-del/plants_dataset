@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Data and outputs
+Malabar_Dataset/
+augmented_dataset/
+augmentation_review_grids/
+features/
+logs/
+
+# MacOS
+.DS_Store
+
+# IDE
+.vscode/
