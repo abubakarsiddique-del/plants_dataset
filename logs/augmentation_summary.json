@@ -1,0 +1,55 @@
+{
+  "run_completed_at_utc": "2026-07-30T12:31:43.231120+00:00",
+  "input_dir": "/Users/abubakarsiddique/Desktop/plantdataset/Malabar_Dataset",
+  "output_augmented_dir": "/Users/abubakarsiddique/Desktop/plantdataset/augmented_dataset",
+  "output_grids_dir": "/Users/abubakarsiddique/Desktop/plantdataset/augmentation_review_grids",
+  "config": {
+    "WORKING_SIZE": [
+      640,
+      640
+    ],
+    "THUMB_SIZE": [
+      300,
+      300
+    ],
+    "GRID_COLS": 4,
+    "JPEG_QUALITY": 90,
+    "RANDOM_SEED": 42,
+    "num_augmentations_per_image": 12
+  },
+  "totals": {
+    "expected_images": 3006,
+    "readable_images": 3006,
+    "processed": 417,
+    "skipped": 2589,
+    "failed": 0,
+    "corrupt_at_validation": 0,
+    "augmented_files_generated_this_run": 5004,
+    "review_grids_generated_this_run": 417,
+    "expected_augmented_files_full_dataset": 36072,
+    "expected_review_grids_full_dataset": 3006
+  },
+  "per_class_processed": {
+    "Pest-Damage(513)": 417
+  },
+  "per_class_skipped": {
+    "Anthracnose(102)": 102,
+    "Bacterial-Spot(752)": 752,
+    "Downy-Mildew(240)": 240,
+    "Healthy-Leaf(1399)": 1399,
+    "Pest-Damage(513)": 96
+  },
+  "per_class_failed": {},
+  "runtime_sec": 79.79,
+  "average_time_per_processed_image_sec": 0.1913,
+  "disk_usage_bytes": {
+    "augmented_dataset": 1972079068,
+    "augmentation_review_grids": 697653671,
+    "total": 2669732739
+  },
+  "disk_usage_human": {
+    "augmented_dataset": "1.84 GB",
+    "augmentation_review_grids": "665.33 MB",
+    "total": "2.49 GB"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "c": 7,
+  "m": 2.0,
+  "seed": 42,
+  "error": 1e-05,
+  "maxiter": 1000,
+  "n_samples": 3006,
+  "n_features": 128,
+  "fpc": 0.14285714285716566,
+  "nmi": 0.013056725827312907,
+  "ari": 0.011745822487267263,
+  "cluster_counts": {
+    "4": 1445,
+    "5": 1560,
+    "2": 1
+  },
+  "class_labels": [
+    "Anthracnose(102)",
+    "Bacterial-Spot(752)",
+    "Downy-Mildew(240)",
+    "Healthy-Leaf(1399)",
+    "Pest-Damage(513)"
+  ],
+  "label_counts": {
+    "Anthracnose(102)": 102,
+    "Bacterial-Spot(752)": 752,
+    "Downy-Mildew(240)": 240,
+    "Healthy-Leaf(1399)": 1399,
+    "Pest-Damage(513)": 513
+  },
+  "membership_entropy_mean": 0.9999999999999583,
+  "membership_entropy_std": 5.693417002694795e-14,
+  "feature_path": "features/feature_matrix.npy",
+  "feature_index_path": "features/feature_index.csv"
+}

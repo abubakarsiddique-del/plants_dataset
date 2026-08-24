@@ -1,0 +1,6 @@
+class_label,cluster_2,cluster_4,cluster_5
+Anthracnose(102),0,72,30
+Bacterial-Spot(752),0,333,419
+Downy-Mildew(240),0,121,119
+Healthy-Leaf(1399),1,603,795
+Pest-Damage(513),0,316,197

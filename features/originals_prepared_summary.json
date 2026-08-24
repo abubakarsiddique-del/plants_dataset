@@ -1,0 +1,35 @@
+{
+  "prepared_at_utc": null,
+  "source": "originals_only",
+  "num_originals": 3006,
+  "class_counts": {
+    "Anthracnose(102)": 102,
+    "Bacterial-Spot(752)": 752,
+    "Downy-Mildew(240)": 240,
+    "Healthy-Leaf(1399)": 1399,
+    "Pest-Damage(513)": 513
+  },
+  "normalization": "standard_scaler",
+  "dimensionality_reduction": {
+    "method": "PCA",
+    "n_components": 64,
+    "explained_variance_ratio_sum": 0.6725689172744751,
+    "explained_variance_ratio_top10": [
+      0.07075309008359909,
+      0.059908971190452576,
+      0.03775821998715401,
+      0.03160872310400009,
+      0.026803962886333466,
+      0.0239091943949461,
+      0.021581705659627914,
+      0.02008374221622944,
+      0.018350249156355858,
+      0.017122013494372368
+    ]
+  },
+  "feature_files": {
+    "scaled_features": "features/originals_scaled_features.npy",
+    "pca64_features": "features/originals_pca64_features.npy",
+    "feature_rows": "features/originals_feature_rows.npy"
+  }
+}
