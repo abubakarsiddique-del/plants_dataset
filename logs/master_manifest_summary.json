@@ -1,0 +1,52 @@
+{
+  "generated_at_utc": "2026-07-30T12:39:16.154110+00:00",
+  "manifest_version": "1.0.0",
+  "manifest_path": "/Users/abubakarsiddique/Desktop/plantdataset/logs/master_manifest.csv",
+  "input_dir": "/Users/abubakarsiddique/Desktop/plantdataset/Malabar_Dataset",
+  "augmented_dir": "/Users/abubakarsiddique/Desktop/plantdataset/augmented_dataset",
+  "pipeline_random_seed": 42,
+  "letterbox_target_size": [
+    640,
+    640
+  ],
+  "totals": {
+    "rows": 39078,
+    "original_rows": 3006,
+    "augmented_rows": 36072,
+    "unique_sources": 3006,
+    "expected_originals": 3006,
+    "expected_augmented": 36072,
+    "expected_rows": 39078
+  },
+  "per_class_original": {
+    "Anthracnose(102)": 102,
+    "Bacterial-Spot(752)": 752,
+    "Downy-Mildew(240)": 240,
+    "Healthy-Leaf(1399)": 1399,
+    "Pest-Damage(513)": 513
+  },
+  "per_class_augmented": {
+    "Anthracnose(102)": 1224,
+    "Bacterial-Spot(752)": 9024,
+    "Downy-Mildew(240)": 2880,
+    "Healthy-Leaf(1399)": 16788,
+    "Pest-Damage(513)": 6156
+  },
+  "per_augmentation_slug": {
+    "brightness": 3006,
+    "clahe": 3006,
+    "contrast": 3006,
+    "gaussian_blur": 3006,
+    "gaussian_noise": 3006,
+    "horizontal_flip": 3006,
+    "hue_saturation": 3006,
+    "rotation": 3006,
+    "shear": 3006,
+    "translation": 3006,
+    "vertical_flip": 3006,
+    "zoom_scale": 3006
+  },
+  "warnings_count": 0,
+  "warnings_sample": [],
+  "validation_issues": []
+}

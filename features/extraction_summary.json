@@ -1,0 +1,68 @@
+{
+  "generated_at_utc": "2026-08-03T11:06:51.354909+00:00",
+  "manifest_path": "/Users/abubakarsiddique/Desktop/plantdataset/logs/master_manifest.csv",
+  "output_dir": "/Users/abubakarsiddique/Desktop/plantdataset/features",
+  "strategy": "semantic_embedding",
+  "device": "mps",
+  "config": {
+    "embedding_mode": "semantic_only",
+    "deep_backbone": "resnet50",
+    "deep_embed_dim": 2048,
+    "classical_feature_dim": 1067,
+    "raw_feature_dim": 2048,
+    "pca_components": 128,
+    "batch_size": 32,
+    "checkpoint_interval": 256,
+    "classical_texture_size": [
+      256,
+      256
+    ],
+    "working_size": [
+      640,
+      640
+    ],
+    "random_state": 42,
+    "classical_feature_groups": {
+      "hsv_histogram": 512,
+      "lab_histogram": 512,
+      "glcm": 4,
+      "lbp_histogram": 26,
+      "hu_moments": 7,
+      "lesion_stats": 6
+    }
+  },
+  "totals": {
+    "manifest_rows_requested": 39078,
+    "rows_processed": 39078,
+    "rows_failed": 0,
+    "final_feature_shape": [
+      39078,
+      128
+    ]
+  },
+  "pca": {
+    "explained_variance_ratio_sum": 0.8559751510620117,
+    "explained_variance_ratio_top10": [
+      0.09886182099580765,
+      0.06506900489330292,
+      0.04646589234471321,
+      0.037616051733493805,
+      0.031959135085344315,
+      0.0308806374669075,
+      0.02861774154007435,
+      0.027196835726499557,
+      0.0247466079890728,
+      0.02323279157280922
+    ],
+    "n_components": 128
+  },
+  "artifacts": {
+    "feature_matrix": "/Users/abubakarsiddique/Desktop/plantdataset/features/feature_matrix.npy",
+    "feature_matrix_raw": "/Users/abubakarsiddique/Desktop/plantdataset/features/feature_matrix_raw.npy",
+    "feature_matrix_scaled": "/Users/abubakarsiddique/Desktop/plantdataset/features/feature_matrix_scaled.npy",
+    "feature_index_csv": "/Users/abubakarsiddique/Desktop/plantdataset/features/feature_index.csv",
+    "scaler": "/Users/abubakarsiddique/Desktop/plantdataset/features/scaler.joblib",
+    "pca": "/Users/abubakarsiddique/Desktop/plantdataset/features/pca.joblib"
+  },
+  "runtime_sec": 3817.05
+}

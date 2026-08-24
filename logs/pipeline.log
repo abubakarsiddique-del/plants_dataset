@@ -1,0 +1,67 @@
+2026-07-30 17:00:10 | INFO | Dependency versions:
+2026-07-30 17:00:10 | INFO |   albumentations: 2.0.8
+2026-07-30 17:00:10 | INFO |   opencv-python-headless: 4.10.0
+2026-07-30 17:00:10 | INFO |   pillow: 11.3.0
+2026-07-30 17:00:10 | INFO |   numpy: 2.0.2
+2026-07-30 17:00:10 | INFO |   tqdm: 4.70.0
+2026-07-30 17:01:19 | INFO | Dependency versions:
+2026-07-30 17:01:19 | INFO |   albumentations: 2.0.8
+2026-07-30 17:01:19 | INFO |   opencv-python-headless: 4.10.0
+2026-07-30 17:01:19 | INFO |   pillow: 11.3.0
+2026-07-30 17:01:19 | INFO |   numpy: 1.26.4
+2026-07-30 17:01:19 | INFO |   tqdm: 4.70.0
+2026-07-30 17:01:19 | INFO | Configured 12 isolated augmentation techniques
+2026-07-30 17:01:19 | INFO | Discovered 5 class folders under /Users/abubakarsiddique/Desktop/plantdataset/Malabar_Dataset
+2026-07-30 17:01:19 | INFO | Class Anthracnose(102): 102 images (OK)
+2026-07-30 17:01:40 | INFO | Class Bacterial-Spot(752): 752 images (OK)
+2026-07-30 17:01:53 | INFO | Class Downy-Mildew(240): 240 images (OK)
+2026-07-30 17:01:59 | INFO | Class Healthy-Leaf(1399): 1399 images (OK)
+2026-07-30 17:02:28 | INFO | Class Pest-Damage(513): 513 images (OK)
+2026-07-30 17:02:39 | INFO | Validation complete: 3006 readable images, 0 corrupt
+2026-07-30 17:02:39 | INFO | Smoke test mode: processing first 3 images only
+2026-07-30 17:02:44 | INFO | ============================================================
+2026-07-30 17:02:44 | INFO | AUGMENTATION RUN COMPLETE
+2026-07-30 17:02:44 | INFO | Processed: 3 | Skipped: 0 | Failed: 0
+2026-07-30 17:02:44 | INFO | Augmented files this run: 36
+2026-07-30 17:02:44 | INFO | Review grids this run: 3
+2026-07-30 17:02:44 | INFO | Total runtime: 4.30 sec (avg 1.4342 sec/image processed)
+2026-07-30 17:02:44 | INFO | Disk usage — augmented: 1.93 MB | grids: 697.15 KB | total: 2.62 MB
+2026-07-30 17:02:44 | INFO | Summary saved to /Users/abubakarsiddique/Desktop/plantdataset/logs/augmentation_summary.json
+2026-07-30 17:03:06 | INFO | Dependency versions:
+2026-07-30 17:03:06 | INFO |   albumentations: 2.0.8
+2026-07-30 17:03:06 | INFO |   opencv-python-headless: 4.10.0
+2026-07-30 17:03:06 | INFO |   pillow: 11.3.0
+2026-07-30 17:03:06 | INFO |   numpy: 1.26.4
+2026-07-30 17:03:06 | INFO |   tqdm: 4.70.0
+2026-07-30 17:03:06 | INFO | Configured 12 isolated augmentation techniques
+2026-07-30 17:03:06 | INFO | Discovered 5 class folders under /Users/abubakarsiddique/Desktop/plantdataset/Malabar_Dataset
+2026-07-30 17:03:06 | INFO | Class Anthracnose(102): 102 images (OK)
+2026-07-30 17:03:46 | INFO | Class Bacterial-Spot(752): 752 images (OK)
+2026-07-30 17:03:56 | INFO | Class Downy-Mildew(240): 240 images (OK)
+2026-07-30 17:04:00 | INFO | Class Healthy-Leaf(1399): 1399 images (OK)
+2026-07-30 17:04:30 | INFO | Class Pest-Damage(513): 513 images (OK)
+2026-07-30 17:04:43 | INFO | Validation complete: 3006 readable images, 0 corrupt
+2026-07-30 17:29:48 | INFO | Dependency versions:
+2026-07-30 17:29:48 | INFO |   albumentations: 2.0.8
+2026-07-30 17:29:48 | INFO |   opencv-python-headless: 4.10.0
+2026-07-30 17:29:48 | INFO |   pillow: 11.3.0
+2026-07-30 17:29:48 | INFO |   numpy: 1.26.4
+2026-07-30 17:29:48 | INFO |   tqdm: 4.70.0
+2026-07-30 17:29:48 | INFO | Configured 12 isolated augmentation techniques
+2026-07-30 17:29:48 | INFO | Discovered 5 class folders under /Users/abubakarsiddique/Desktop/plantdataset/Malabar_Dataset
+2026-07-30 17:29:48 | INFO | Class Anthracnose(102): 102 images (OK)
+2026-07-30 17:29:58 | INFO | Class Bacterial-Spot(752): 752 images (OK)
+2026-07-30 17:30:03 | INFO | Class Downy-Mildew(240): 240 images (OK)
+2026-07-30 17:30:05 | INFO | Class Healthy-Leaf(1399): 1399 images (OK)
+2026-07-30 17:30:17 | INFO | Class Pest-Damage(513): 513 images (OK)
+2026-07-30 17:30:22 | INFO | Validation complete: 3006 readable images, 0 corrupt
+2026-07-30 17:31:43 | INFO | ============================================================
+2026-07-30 17:31:43 | INFO | AUGMENTATION RUN COMPLETE
+2026-07-30 17:31:43 | INFO | Processed: 417 | Skipped: 2589 | Failed: 0
+2026-07-30 17:31:43 | INFO | Augmented files this run: 5004
+2026-07-30 17:31:43 | INFO | Review grids this run: 417
+2026-07-30 17:31:43 | INFO | Total runtime: 79.79 sec (avg 0.1913 sec/image processed)
+2026-07-30 17:31:43 | INFO | Disk usage — augmented: 1.84 GB | grids: 665.33 MB | total: 2.49 GB
+2026-07-30 17:31:43 | INFO | Summary saved to /Users/abubakarsiddique/Desktop/plantdataset/logs/augmentation_summary.json
+2026-07-30 17:31:43 | INFO | Post-run sanity check (10 augmented + 10 grids)...
+2026-07-30 17:31:44 | INFO | Sanity check passed: 10/10 augmented, 10/10 review grids valid

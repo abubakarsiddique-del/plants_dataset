@@ -1,0 +1,6 @@
+best_c=4
+seed=0
+fpc=0.250000
+cluster_0=1
+cluster_1=1387
+cluster_3=1618

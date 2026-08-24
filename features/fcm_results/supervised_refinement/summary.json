@@ -1,0 +1,63 @@
+{
+  "n_samples": 3006,
+  "n_features": 128,
+  "train_size": 2404,
+  "test_size": 602,
+  "label_map": [
+    "Anthracnose(102)",
+    "Bacterial-Spot(752)",
+    "Downy-Mildew(240)",
+    "Healthy-Leaf(1399)",
+    "Pest-Damage(513)"
+  ],
+  "accuracy": 0.627906976744186,
+  "macro_f1": 0.5658481829538755,
+  "classification_report": {
+    "0": {
+      "precision": 0.40625,
+      "recall": 0.65,
+      "f1-score": 0.5,
+      "support": 20.0
+    },
+    "1": {
+      "precision": 0.5912408759124088,
+      "recall": 0.5364238410596026,
+      "f1-score": 0.5625,
+      "support": 151.0
+    },
+    "2": {
+      "precision": 0.4125,
+      "recall": 0.6875,
+      "f1-score": 0.515625,
+      "support": 48.0
+    },
+    "3": {
+      "precision": 0.7821011673151751,
+      "recall": 0.7178571428571429,
+      "f1-score": 0.7486033519553073,
+      "support": 280.0
+    },
+    "4": {
+      "precision": 0.5208333333333334,
+      "recall": 0.4854368932038835,
+      "f1-score": 0.5025125628140703,
+      "support": 103.0
+    },
+    "accuracy": 0.627906976744186,
+    "macro avg": {
+      "precision": 0.5425850753121835,
+      "recall": 0.6154435754241258,
+      "f1-score": 0.5658481829538755,
+      "support": 602.0
+    },
+    "weighted avg": {
+      "precision": 0.6475689907713555,
+      "recall": 0.627906976744186,
+      "f1-score": 0.6329821138161715,
+      "support": 602.0
+    }
+  },
+  "model": "logistic_regression",
+  "feature_path": "features/feature_matrix.npy",
+  "feature_index_path": "features/feature_index.csv"
+}

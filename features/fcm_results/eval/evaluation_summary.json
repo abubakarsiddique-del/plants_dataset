@@ -1,0 +1,17 @@
+{
+  "tsne_path": "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/tsne_true_class.png",
+  "tsne_cluster_path": "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/tsne_cluster_assignment.png",
+  "umap_path": "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/umap_true_class.png",
+  "umap_cluster_path": "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/umap_cluster_assignment.png",
+  "cluster_montages": [
+    "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/cluster_0_top10.png",
+    "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/cluster_1_top10.png",
+    "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/cluster_4_top10.png"
+  ],
+  "augmentation_stability_csv": "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/augmentation_stability.csv",
+  "entropy_csv": "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/entropy_highest_200.csv",
+  "high_entropy_montage": "/Users/abubakarsiddique/Desktop/plantdataset/features/fcm_results/eval/high_entropy_top20.png",
+  "n_parents": 3006,
+  "n_stable_parents": 975,
+  "stable_percent": 0.32435129740518964
+}
