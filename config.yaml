@@ -1,3 +1,149 @@
+# ===========================================================================
+# Malabar plant-disease classifier + LangGraph audit workflow
+# Single source of truth for Part A (CV pipeline) and Part B (agentic layer).
+# Profile-scoped values look like {fast: X, full: Y}; select with --profile.
+# ===========================================================================
+seed: 42
+
+run:
+  output_root: runs          # per-run artifacts under runs/<run_id>/
+  profile: fast              # fast = quick real run (CPU-minutes) | full = spec scale
+
+data:
+  root: Malabar_Dataset
+  # 7 canonical classes are fixed and never renamed. Only those also present on
+  # disk (5) are "active" (trained/evaluated); the rest are reported as
+  # declared-but-unpopulated by Agent 1 and in the dataset card.
+  canonical_classes:
+    - Healthy-Leaf
+    - Anthracnose
+    - Pest-Damage
+    - Bacterial-Spot
+    - Downy-Mildew
+    - Dichotomophthora-Leaf-Spot
+    - Bipolaris-Leaf-Spot
+  image_size: 224            # model input
+  working_size: 640          # letterbox standardization target (matches existing pipeline)
+  splits: {train: 0.70, val: 0.15, test: 0.15}
+  max_images_per_class: {fast: 120, full: null}   # cap for quick runs; null = all
+
+  domain:
+    strategy: hybrid         # proxy | synthetic | hybrid
+    proxy:
+      # Metadata signals combined into a deterministic pseudo source_domain.
+      signals: [resolution_bucket, aspect_bucket, jpeg_quant]
+      resolution_buckets: [512, 1024, 2048]   # max-dim thresholds -> S/M/L/XL
+      min_domain_fraction: 0.05                # domains rarer than this are merged into "misc"
+    external:
+      mode: auto             # auto = hold out a real proxy domain if separable, else synthetic
+      holdout_fraction: 0.15 # size of external_domain_test (fraction of active images)
+      corruptions: [white_balance, jpeg_recompress, sensor_noise]
+
+  dedup:
+    hash: phash              # phash | dhash | ahash
+    hash_size: 16
+    near_dup_hamming: 12     # <= this Hamming distance counts as a near-duplicate
+
+augment:
+  # 12-technique training pool (stochastic, applied on the fly to the train split).
+  techniques:
+    - flip
+    - rotate
+    - shift_scale_rotate
+    - brightness_contrast
+    - hue_saturation
+    - rgb_shift
+    - gaussian_noise
+    - blur
+    - clahe_sharpen
+    - coarse_dropout
+    - elastic_grid
+  # Domain-randomization group to reduce device/domain overfitting.
+  domain_randomization: [sensor_noise, white_balance, jpeg]
+  domain_randomization_prob: 0.5
+
+model:
+  backbone: efficientnetv2_s        # timm tf_efficientnetv2_s -> torchvision efficientnet_v2_s -> efficientnet_b0
+  pretrained: true
+  allow_backbone_fallback: true     # drop to a backbone with cached ImageNet weights when offline
+  dropout: 0.3
+  proj_dim: 128                     # SupCon projection head output dim
+  simsiam:
+    enabled: false
+    epochs: {fast: 1, full: 10}
+    proj_dim: 2048
+    pred_dim: 512
+    lr: 0.05
+
+loss:
+  ce_weight: 1.0
+  supcon_weight: 0.5
+  supcon_temperature: 0.07
+  class_balancing: effective_number  # effective_number | focal | none
+  cb_beta: 0.999
+  focal_gamma: 2.0
+
+train:
+  epochs: {fast: 3, full: 40}
+  batch_size: 32
+  lr: 0.0003
+  weight_decay: 0.0001
+  optimizer: adamw
+  scheduler: cosine
+  warmup_epochs: 1
+  num_workers: 0
+  amp: false
+  balanced_sampler: true
+  early_stopping_patience: {fast: 3, full: 8}
+
+eval:
+  cv_folds: {fast: 2, full: 5}
+  cv_epochs: {fast: 1, full: 15}     # epochs per CV fold (kept < full training)
+  bootstrap: {n: 1000, ci: 0.95}
+  bootstrap_fast_n: 200              # smaller resample count in fast profile
+
+explain:
+  method: gradcampp                  # gradcampp | layercam
+  samples_per_class: {fast: 2, full: 5}
+  faithfulness_steps: 20             # deletion/insertion curve steps
+  faithfulness_batch: 32
+
+export:
+  onnx_opset: 17
+  benchmark_runs: {fast: 20, full: 100}
+  warmup_runs: 5
+  cpu_threads: 1                     # low-cost single-core device profile
+  device_budget: {latency_ms: 200.0, peak_mem_mb: 512.0}
+
+tracking:
+  backend: local                     # local | mlflow | wandb
+  project: malabar-plant-disease
+
+agents:
+  provider: gemini                   # gemini | anthropic | openai (swappable)
+  model: gemini-2.5-flash            # gemini-2.5-pro for stronger reasoning
+  api_key_env: GEMINI_API_KEY        # falls back to GOOGLE_API_KEY for the gemini provider
+  base_url: https://generativelanguage.googleapis.com
+  auth: api_key                      # api_key (query/x-goog-api-key) | bearer
+  temperature: 0.1                   # low: agents audit, they do not create
+  max_tokens: 2048
+  max_schema_retries: 2              # re-ask on structured-output validation failure
+
+# Part B gap floors (Agent 2 fails a gap when its metric crosses these).
+thresholds:
+  domain_gap_pts: 10.0               # max allowed in-domain minus external drop (accuracy & macro-F1)
+  min_class_f1: 0.70                 # per-class F1 floor
+  faithfulness_min: 0.05             # min (insertion_auc - deletion_auc)
+  latency_ms: 200.0                  # CPU latency budget (must match export.device_budget)
+  peak_mem_mb: 512.0
+
+retry:
+  max_retries: 1                     # Agent 2 needs_rework loop-backs before forced ship
+
+# ---------------------------------------------------------------------------
+# Legacy Fuzzy C-Means config (consumed by the pre-existing clustering script;
+# untouched so `fuzzy_cmeans_pipeline.py --config config.yaml` still works).
+# ---------------------------------------------------------------------------
 fcm:
   feature_path: features/originals_pca64_features.npy
   feature_index_path: features/feature_index.csv
