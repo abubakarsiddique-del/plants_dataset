@@ -1,13 +1,71 @@
-torch==2.1.1
-torchvision==0.16.2
-pillow==10.0.0
+# ===========================================================================
+# Malabar plant-disease classifier + LangGraph audit workflow
+# ===========================================================================
+# Two tiers:
+#   [core]     — required; the pipeline is verified against exactly these versions.
+#   [optional] — the spec-preferred libraries. The code PREFERS them when present
+#                and DEGRADES GRACEFULLY when absent, so `python run_pipeline.py`
+#                runs with the core tier alone. Uncomment / install to upgrade to
+#                the full-fidelity path.
+#
+# Fallback map (what you lose without each optional lib):
+#   timm            -> EfficientNetV2-S. Falls back to torchvision efficientnet_v2_s,
+#                      then efficientnet_b0 (cached ImageNet weights).
+#   langgraph       -> real StateGraph engine. Falls back to the built-in MiniGraph
+#                      (identical node/edge/interrupt/resume/retry semantics).
+#   onnx/onnxruntime-> ONNX export + checker + ORT latency benchmark. Falls back to a
+#                      torch-CPU benchmark; the ONNX export error is recorded, not fatal.
+#   imagehash       -> pHash via the imagehash lib. Falls back to a self-contained
+#                      DCT-based pHash (numpy/scipy) — identical dedup behavior.
+#   pytorch-grad-cam-> library Grad-CAM++. Falls back to from-scratch hook-based
+#                      Grad-CAM++ implemented in explain.py.
+#   mlflow / wandb  -> experiment tracking sync. Falls back to the local file tracker
+#                      (JSON/CSV/JSONL under runs/<id>/tracking, always on).
+# ===========================================================================
+
+# ------------------------------- [core] -----------------------------------
+torch==2.2.2
+torchvision==0.17.2
 numpy==1.26.4
-matplotlib==3.8.2
-scikit-learn==1.3.3
-scikit-image==0.22.0
-joblib==1.3.2
-albumentations==1.3.1
-opencv-python-headless==4.11.0.72
-tqdm==4.66.1
-scikit-fuzzy==0.4.2
-PyYAML==6.0
+scipy==1.13.1
+scikit-learn==1.6.1
+albumentations==2.0.8
+opencv-python-headless==4.10.0.84
+Pillow==11.3.0
+matplotlib==3.9.4
+PyYAML==6.0.3
+pydantic==2.13.4          # v2 structured-output schemas for the audit agents
+requests==2.32.5          # direct REST calls to the LLM providers (no SDK needed)
+
+# ----------------------------- [optional] ---------------------------------
+# Model / SSL
+# timm==1.0.9                      # EfficientNetV2-S + broader backbone zoo
+
+# Agentic orchestration (real LangGraph StateGraph + checkpointers)
+# langgraph==0.2.28
+# langgraph-checkpoint-sqlite==2.0.0   # durable interrupt/resume across processes
+# langchain==0.3.3                     # optional: init_chat_model provider path
+# langchain-core==0.3.10
+
+# LLM provider SDKs (optional; the code uses plain `requests` by default)
+# google-generativeai==0.8.3           # Gemini (default provider) — REST works without it
+# anthropic==0.39.0
+# openai==1.51.0
+
+# Explainability
+# grad-cam==1.5.4                      # pytorch-grad-cam (Grad-CAM++/LayerCAM)
+
+# Deduplication
+# imagehash==4.3.1                     # perceptual hashing
+
+# Export / inference
+# onnx==1.16.2
+# onnxruntime==1.19.2                  # CPU latency benchmark backend
+# psutil==6.0.0                        # finer peak-memory measurement
+
+# Experiment tracking (local file tracker is always available without these)
+# mlflow==2.16.2
+# wandb==0.18.3
+
+# Tests
+# pytest==8.3.3

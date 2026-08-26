@@ -14,15 +14,20 @@ dist/
 *.egg-info/
 .eggs/
 
-# Data and outputs
-Malabar_Dataset/
-augmented_dataset/
-augmentation_review_grids/
-features/
-logs/
+
+
 
 # MacOS
 .DS_Store
 
 # IDE
 .vscode/
+
+# Secrets (API keys) — never commit
+.env
+.env.*
+!.env.example
+
+# Pipeline run artifacts
+runs/
+*.onnx
